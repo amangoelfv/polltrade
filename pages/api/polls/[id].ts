@@ -28,10 +28,10 @@ export default async function handler(
 
     // Transform MongoDB poll to API format
     const formattedPoll: PollType = {
-      id: poll._id.toString(),
+      id: (poll._id as any).toString(),
       question: poll.question,
       options: poll.options.map(opt => ({
-        id: opt._id.toString(),
+        id: (opt._id as any).toString(),
         text: opt.text,
         votePercentage: poll.totalVotes > 0 
           ? Math.round((opt.voteCount / poll.totalVotes) * 100) 
