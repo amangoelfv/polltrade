@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import type { Poll } from '../types/poll';
+import SEO from '../components/SEO';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -82,12 +82,13 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>PollTrade - Predict & Trade on Real-World Events</title>
-        <meta name="description" content="Participate in polls and predict outcomes of real-world events" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title="PollTrade - Vote on Trending Polls & Predict Outcomes"
+        description="Join PollTrade to vote on trending polls about sports, finance, cryptocurrency, and technology. Make predictions, compete with others, and track your win rate."
+        canonical="/"
+        keywords="polls, voting, predictions, sports polls, finance polls, crypto polls, IPL polls, stock market predictions"
+        ogType="website"
+      />
       
       <div className={styles.main}>
         <div className={styles.container}>

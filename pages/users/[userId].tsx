@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import SEO from '../../components/SEO';
 import styles from '../../styles/UserProfile.module.css';
 
 interface UserPollVote {
@@ -106,12 +106,11 @@ export default function UserProfile() {
   if (loading) {
     return (
       <>
-        <Head>
-          <title>User Profile - PollTrade</title>
-          <meta name="description" content="View user profile" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.png" />
-        </Head>
+        <SEO
+          title="User Profile"
+          description="View user profile and voting history on PollTrade."
+          noindex={true}
+        />
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
           <p>Loading profile...</p>
@@ -123,11 +122,11 @@ export default function UserProfile() {
   if (error || !user || !stats) {
     return (
       <>
-        <Head>
-          <title>User Not Found - PollTrade</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.png" />
-        </Head>
+        <SEO
+          title="User Not Found"
+          description="The requested user profile could not be found."
+          noindex={true}
+        />
         <div className={styles.errorContainer}>
           <h2>⚠️ {error || 'User not found'}</h2>
           <Link href="/" className={styles.backLink}>
@@ -140,12 +139,13 @@ export default function UserProfile() {
 
   return (
     <>
-      <Head>
-        <title>{user.name} - PollTrade</title>
-        <meta name="description" content={`View ${user.name}'s profile and poll history`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title={`${user.name}'s Profile`}
+        description={`View ${user.name}'s voting history on PollTrade. ${stats.totalVotes} total votes, ${stats.pollsWon} polls won, ${stats.winRate}% win rate.`}
+        canonical={`/users/${userId}`}
+        keywords={`${user.name}, user profile, voting history, poll predictions`}
+        ogType="article"
+      />
 
       <div className={styles.main}>
         <div className={styles.container}>

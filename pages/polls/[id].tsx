@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Link from 'next/link';
 import type { Poll } from '../../types/poll';
 import type { Comment } from '../../types/comment';
 import { api } from '../../utils/api';
 import { useAuth } from '../../context/AuthContext';
+import SEO from '../../components/SEO';
 import styles from '../../styles/PollDetail.module.css';
 
 export default function PollDetail() {
@@ -284,14 +284,46 @@ export default function PollDetail() {
     );
   }
 
+  const generatePollDescription = () => {
+    const optionsText = poll.options.map(opt => `${opt.text} (${opt.votePercentage}%)`).join(', ');
+    return `Vote on: ${poll.question}. Options: ${optionsText}. ${poll.totalVotes} total votes. ${isPollExpired(poll.expiresAt) ? 'Poll expired' : 'Poll active'}.`;
+  };
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Question',
+    name: poll.question,
+    text: poll.question,
+    dateCreated: poll.expiresAt,
+    answerCount: poll.options.length,
+    suggestedAnswer: poll.options.map((option, index) => ({
+      '@type': 'Answer',
+      text: option.text,
+      upvoteCount: Math.round((option.votePercentage / 100) * poll.totalVotes),
+      position: index + 1
+    })),
+    interactionStatistic: {
+      '@type': 'InteractionCounter',
+      interactionType: 'https://schema.org/VoteAction',
+      userInteractionCount: poll.totalVotes
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>{poll.question} - PollTrade</title>
-        <meta name="description" content={poll.question} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title={poll.question}
+        description={generatePollDescription()}
+        canonical={`/polls/${id}`}
+        keywords={`${poll.category}, poll, voting, ${poll.question}`}
+        ogType="article"
+        publishedTime={poll.expiresAt}
+      />
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       
       <div className={styles.main}>
         <div className={styles.container}>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../utils/api';
+import SEO from '../components/SEO';
 import styles from '../styles/MyPolls.module.css';
 
 interface UserPollVote {
@@ -90,12 +90,12 @@ export default function MyPolls() {
   if (isLoading || loading) {
     return (
       <>
-        <Head>
-          <title>My Polls - PollTrade</title>
-          <meta name="description" content="View your poll voting history" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.png" />
-        </Head>
+        <SEO
+          title="My Polls"
+          description="View your poll voting history and track your predictions on PollTrade."
+          canonical="/my-polls"
+          noindex={true}
+        />
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
           <p>Loading your polls...</p>
@@ -106,12 +106,12 @@ export default function MyPolls() {
 
   return (
     <>
-      <Head>
-        <title>My Polls - PollTrade</title>
-        <meta name="description" content="View your poll voting history" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title="My Polls"
+        description="View your poll voting history and track your predictions on PollTrade."
+        canonical="/my-polls"
+        noindex={true}
+      />
 
       <div className={styles.main}>
         <div className={styles.container}>

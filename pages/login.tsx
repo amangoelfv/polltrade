@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
+import SEO from '../components/SEO';
 import styles from '../styles/Login.module.css';
 
 type LoginStep = 'mobile' | 'otp' | 'profile';
@@ -264,12 +264,12 @@ export default function Login() {
 
   return (
     <>
-      <Head>
-        <title>Login - PollTrade</title>
-        <meta name="description" content="Login to PollTrade" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title="Login to PollTrade"
+        description="Sign in to PollTrade to vote on polls, track your predictions, and compete with other users. Quick mobile number authentication."
+        canonical="/login"
+        noindex={true}
+      />
 
       <div className={styles.loginContainer}>
         <div className={styles.loginCard}>

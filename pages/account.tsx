@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
+import SEO from '../components/SEO';
 import styles from '../styles/Account.module.css';
 
 export default function Account() {
@@ -33,12 +33,12 @@ export default function Account() {
 
   return (
     <>
-      <Head>
-        <title>My Account - PollTrade</title>
-        <meta name="description" content="Manage your PollTrade account" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
+      <SEO
+        title="My Account"
+        description="Manage your PollTrade account, view your profile, and access your voting history."
+        canonical="/account"
+        noindex={true}
+      />
 
       <div className={styles.accountContainer}>
         <div className={styles.container}>

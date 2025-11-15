@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# Disallow authentication and API routes
+Disallow: /api/
+Disallow: /login
+Disallow: /account
+Disallow: /my-polls
+
+# Sitemap
+Sitemap: https://polltrade.vercel.app/sitemap.xml
+
