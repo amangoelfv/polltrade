@@ -71,7 +71,7 @@ export default async function handler(
     const polls = await Poll.find({ _id: { $in: pollIds } }).lean<IPoll[]>();
 
     // Create a map for quick lookup
-    const pollMap = new Map(polls.map(p => [p._id.toString(), p]));
+    const pollMap = new Map(polls.map(p => [(p._id as any).toString(), p]));
 
     // Build response with vote results
     const userPolls: UserPollVote[] = userResponses
@@ -83,7 +83,7 @@ export default async function handler(
 
         // Find user's voted option
         const userVotedOption = poll.options.find(
-          opt => opt._id.toString() === response.optionId.toString()
+          opt => (opt._id as any).toString() === response.optionId.toString()
         );
 
         if (!userVotedOption) return null;
@@ -110,17 +110,17 @@ export default async function handler(
           ? Math.round((winningOption.voteCount / poll.totalVotes) * 100)
           : 0;
 
-        const isCorrect = userVotedOption._id.toString() === winningOption._id.toString();
+        const isCorrect = (userVotedOption._id as any).toString() === (winningOption._id as any).toString();
 
         return {
-          pollId: poll._id.toString(),
+          pollId: (poll._id as any).toString(),
           question: poll.question,
           category: poll.category,
           expiresAt: poll.expiresAt.toISOString(),
           isExpired,
-          userVotedOptionId: userVotedOption._id.toString(),
+          userVotedOptionId: (userVotedOption._id as any).toString(),
           userVotedOptionText: userVotedOption.text,
-          winningOptionId: winningOption._id.toString(),
+          winningOptionId: (winningOption._id as any).toString(),
           winningOptionText: winningOption.text,
           userVotePercentage,
           winningVotePercentage,
