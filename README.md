@@ -226,7 +226,7 @@ polltrade/
 │   ├── Home.module.css                 # Home page styles
 │   └── PollDetail.module.css           # Poll detail page styles
 ├── public/
-│   └── favicon.ico                     # Favicon
+│   └── favicon.png                     # Favicon
 ├── package.json                        # Dependencies (includes jsonwebtoken)
 ├── tsconfig.json                       # TypeScript configuration
 ├── next.config.js                      # Next.js configuration

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 import styles from '../styles/Header.module.css';
+import Image from 'next/image';
 
 export default function Header() {
   const { user, isLoading } = useAuth();
@@ -9,7 +10,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoText}>PollTrade</span>
+          <Image src="/logo_wide.png" alt="PollTrade" width={120} height={24} />
         </Link>
 
         <nav className={styles.nav}>

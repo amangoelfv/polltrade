@@ -94,7 +94,7 @@ export default function MyPolls() {
           <title>My Polls - PollTrade</title>
           <meta name="description" content="View your poll voting history" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
@@ -110,7 +110,7 @@ export default function MyPolls() {
         <title>My Polls - PollTrade</title>
         <meta name="description" content="View your poll voting history" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className={styles.main}>

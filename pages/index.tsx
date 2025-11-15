@@ -86,7 +86,7 @@ export default function Home() {
         <title>PollTrade - Predict & Trade on Real-World Events</title>
         <meta name="description" content="Participate in polls and predict outcomes of real-world events" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       
       <div className={styles.main}>

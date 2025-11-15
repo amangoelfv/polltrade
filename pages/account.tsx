@@ -37,7 +37,7 @@ export default function Account() {
         <title>My Account - PollTrade</title>
         <meta name="description" content="Manage your PollTrade account" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className={styles.accountContainer}>

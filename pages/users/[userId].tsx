@@ -110,7 +110,7 @@ export default function UserProfile() {
           <title>User Profile - PollTrade</title>
           <meta name="description" content="View user profile" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
@@ -126,7 +126,7 @@ export default function UserProfile() {
         <Head>
           <title>User Not Found - PollTrade</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <div className={styles.errorContainer}>
           <h2>⚠️ {error || 'User not found'}</h2>
@@ -144,7 +144,7 @@ export default function UserProfile() {
         <title>{user.name} - PollTrade</title>
         <meta name="description" content={`View ${user.name}'s profile and poll history`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className={styles.main}>
