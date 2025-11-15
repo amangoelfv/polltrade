@@ -69,7 +69,8 @@ export default async function handler(
 
     // For development/testing, include OTP in response
     // In production, remove this!
-    const isDevelopment = process.env.NODE_ENV === 'development';
+    const isDevelopment = true;
+    // process.env.NODE_ENV === 'development';
 
     return res.status(200).json({
       success: true,
